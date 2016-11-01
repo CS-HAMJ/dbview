@@ -8,10 +8,9 @@ function HomeController($scope, $http, $location, dbService) {
     database: 'd7ctrh5hg6aadj',
     user: 'dxrwecviorvrto',
     password: 'BDyJHAElIeyxjSLNxI1NBYu3Z4',
-    port: '5432'
+    port: '5432',
+    dialect: 'postgres'
   };
-  $scope.dialects = ['postgres', 'mysql'],
-
     // send post request to get list of all available tables, then navigate to db page
     $scope.post = function () {
       dbService.setCreds($scope.creds);
@@ -21,7 +20,7 @@ function HomeController($scope, $http, $location, dbService) {
         headers: {
           'Content-Type': 'application/json'
         },
-        data: {creds: $scope.creds, query: $scope.query},
+        data: { creds: $scope.creds },
       })
         .then((response) => {
           dbService.setTables(response.data); // save table names to dbService
@@ -29,5 +28,3 @@ function HomeController($scope, $http, $location, dbService) {
         });
     }
 }
-
-
