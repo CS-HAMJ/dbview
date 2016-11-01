@@ -1,14 +1,27 @@
-<tablenav></tablenav>
-<h1>Home</h1>
 
+
+
+<div class="login">
+
+<h1>Login Page</h1>
+<hr>
 <form>
-	<input type="text" ng-model="creds.host" placeholder='Host'></input>
-	<input type="text" ng-model="creds.database" placeholder='Database'></input>
-	<input type="text" ng-model="creds.user" placeholder='User'></input>
-	<input type="text" ng-model="creds.port" placeholder='Port'></input>
-	<input type="text" ng-model="creds.password" placeholder='Password'></input>
-	<select ng-options="item for item in dialects" ng-model="creds.dialect">
-  <option value="" selected>Select a dialect</option>
-  </select>
-	<button type="submit" ng-click="post()">Save</button>
+	<div class="form-group">
+		<label for="host">Host</label>
+		<input id="host" class="form-control" type="text" ng-model="creds.host" placeholder='Host'></input>
+	</div>
+	<div class="form-group">
+		<label for="database">Database</label>
+		<input id="database" class="form-control" type="text" ng-model="creds.database" placeholder='Database'></input>
+	</div>
+	<div class="form-group">
+		<label for="user">User</label>
+		<input id="user" class="form-control" type="text" ng-model="creds.user" placeholder='User'></input>
+	</div>
+	<div class="form-group">
+		<label for="password">Password</label>
+		<input id="password" class="form-control" type="password" ng-model="creds.password" placeholder='Password'></input>
+	</div>
+	<button class='btn btn-primary' type="submit" ng-click="post()">Login</button>
 </form>
+</div>
