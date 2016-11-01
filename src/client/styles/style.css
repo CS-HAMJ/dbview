@@ -6,8 +6,6 @@ body {
   display: block;
 }
 
-
-
 .query-input {
  margin: 50px auto 0 auto;
 }
@@ -15,6 +13,7 @@ body {
 .dropdown {
   margin-left: 10px;
 }
+
 #query {
   width:100%;
 }
@@ -64,3 +63,11 @@ body {
   padding: 2px;
 }
 
+.login {
+  margin: 0 auto;
+  width: 50%;
+}
+
+.login h1 {
+  margin-bottom: 20px;
+}
