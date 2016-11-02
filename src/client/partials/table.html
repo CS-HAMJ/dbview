@@ -10,7 +10,16 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-xs-6">
-					<div ng-if="queryType==='Create Table'">
+
+					<div class ="input-label" ng-show="queryType==='Text Query'">Type full SQL command below</div>
+					<div class="input-label" ng-show="queryType==='Create Table'">Table Name</div>
+					<div class="input-label" ng-show="queryType==='Delete Rows' || queryType==='Update Rows'">WHERE clause</div>
+
+					<input id="query" type="text" ng-model="query" ng-show="queryType==='Text Query' || queryType==='Create Table' || queryType==='Update Rows' || queryType==='Delete Rows'" />
+
+					<div ng-show="queryType==='Create Table'">
+						<div class="input-label" >Column Name</div>
+					<div ng-show="queryType==='Create Table'">
 						<div class="input-label">Table Name</div>
 						<div class="input-label">Column Name</div>
 						<input type="text" ng-model="column"></input><br>
@@ -18,14 +27,8 @@
 						<button class="table-button" ng-click="saveEntry(column, dataType)">Add Column</button>
 						<button class="table-button" ng-click="removeEntry(column)">Remove Column</button>
 					</div>
-					<div class ="input-label" ng-if="queryType==='Text Query'">Type full SQL command below</div>
-					<div class="input-label" ng-if="queryType==='Drop Table'">Table Name</div>
-					<!--ng-if="queryType==='Text Query' || queryType==='Delete Rows' || queryType==='Update Rows' || queryType==='Drop Table'"-->
-					<div class="input-label" ng-if="queryType==='Delete Rows' || queryType==='Update Rows'">WHERE clause</div>
 
-					<input id="query" type="text" ng-model="query"/>
-
-					<div ng-if="queryType==='Update Rows' || queryType==='Insert Rows'">
+					<div ng-show="queryType==='Update Rows' || queryType==='Insert Rows'">
 						<div class="input-label">Column Name</div>
 						<input type="text" ng-model="columnName"></input><br>
 						<div class="input-label">Value</div>
@@ -36,12 +39,14 @@
 						</div>
 					</div>
 				</div>
+
 				<div class="col-xs-6">
-					<div class="input-label" ng-if="queryType==='Update Rows' || queryType==='Insert Rows'">Entries to be added</div>
-					<div class="input-label" margin="0, auto" ng-if="queryType==='Create Table'">Columns to be created</div>
+					<div class="input-label" ng-show="queryType==='Update Rows' || queryType==='Insert Rows'">Entries to be added</div>
+					<div class="input-label" margin="0, auto" ng-show="queryType==='Create Table'">Columns to be created</div>
 					<div class="rows-to-add" ng-repeat="(key, value) in rowsToAdd">{{key}} : {{value}}</div>
 				</div>
 			</div>
+
 			<div class="submit-buttons">
 				<button class="table-button" ng-click="executeQuery(query)">Submit</button>
 				<button class="table-button" ng-click="reset()">Reset</button>
