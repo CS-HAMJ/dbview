@@ -12,7 +12,6 @@ class tableService {
     this.tableData[table] = data;
   }
   getData(table) {
-    console.log(this.tableData);
     return this.tableData[table];
   }
 }
