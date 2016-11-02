@@ -19,9 +19,6 @@
 
 					<div ng-show="queryType==='Create Table'">
 						<div class="input-label" >Column Name</div>
-					<div ng-show="queryType==='Create Table'">
-						<div class="input-label">Table Name</div>
-						<div class="input-label">Column Name</div>
 						<input type="text" ng-model="column"></input><br>
 						<select  ng-model="dataType" ng-options="data for data in dataTypes"><option value="" selected>Data Type</option></select>
 						<button class="table-button" ng-click="saveEntry(column, dataType)">Add Column</button>
