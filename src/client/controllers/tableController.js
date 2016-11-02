@@ -58,6 +58,7 @@ function tableController($scope, tableService, $stateParams, dbService, $http, $
 
         // save the data in table service and update grid data
         tableService.addTableData($scope.name, response.data)
+        console.log('logged');
         $scope.dataToDisplay  = tableService.getData($scope.name);
         $scope.gridData = {
           columnDefs: columns,

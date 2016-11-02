@@ -23,12 +23,17 @@ function dbController($scope, $http, $location, dbService, tableService, $state,
         // add this table to the nav bar
         $scope.activateTable($scope, table, tableService);
 
-         // save the data in table service
+        // save the data in table service
         tableService.addTableData(table, response.data);
-      });
+      })
+      .then((response) => {
+        $scope.viewTable(table);
+        $state.go('^.table');
+      })
   }
   // view a specific table (actual tablename is passed via $stateParams)
   $scope.viewTable = function (table) {
+    console.log("this is logging", table)
     tableService.currentTable = table;
   }
   // add table to nav bar if not already there
