@@ -1,3 +1,5 @@
+'use strict';
+
 const Sequelize = require('sequelize');
 
 const dbCtrl = {
@@ -107,7 +109,7 @@ const dbCtrl = {
         });
 
         // Deleting table, then returning list of table names.
-        return sequelize.query(`DROP TABLE ${obj.where}`)
+        return sequelize.query(`DROP TABLE ${obj.table}`)
             .then((results) => {
                 return sequelize.query(`SELECT table_name FROM information_schema.tables WHERE table_schema NOT IN('pg_catalog', 'information_schema')`, { type: sequelize.QueryTypes.SELECT })
                     .then((results) => { return results.map(result => result[0]) });
