@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({extended: true}), bodyParser.json());
 app.use(express.static(path.join(__dirname, '../../node_modules/')));
 app.use(express.static(path.join(__dirname, '../client/')));
 
-app.post('/requestDB', userCtrl.sendTableList);
+app.post('/requestDB', userCtrl.sendTableList, userCtrl.sendTable);
 app.post('/requestTable', userCtrl.sendTable);
 app.post('/createTable', userCtrl.createTable);
 app.post('/insert', userCtrl.insertEntry);
