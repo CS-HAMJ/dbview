@@ -47,8 +47,9 @@
 			<div class="submit-buttons">
 				<button class="table-button" ng-click="executeQuery(query)">Submit</button>
 				<button class="table-button" ng-click="reset()">Reset</button>
+				<button type="button" class="table-button" ng-csv="exportFile()" filename="data.csv" field-seperator=",">Export</button>
 			</div>
 		</div>
 	</form>
-	
+
 </div>
