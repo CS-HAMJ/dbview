@@ -1,55 +1,28 @@
 <tablenav></tablenav>
-<h1>Create Table</h1>
-
-<div class='table-viewer'>
-
-	<div ui-grid='gridData' class='grid'></div>
-	<br>
-	<!-- <select class="dropdown" ng-model="queryType" >Create Table</select><br> -->
-	<form ng-init="queryType='Create Table'" name="values" class="query-form">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-xs-6">
-
-					<div class ="input-label" ng-show="queryType==='Text Query'">Type full SQL command below</div>
-					<div class="input-label" ng-show="queryType==='Create Table'">Table Name</div>
-					<div class="input-label" ng-show="queryType==='Delete Rows' || queryType==='Update Rows'">WHERE clause</div>
-
-					<input id="query" type="text" ng-model="query" ng-show="queryType==='Text Query' || queryType==='Create Table' || queryType==='Update Rows' || queryType==='Delete Rows'" />
-
-					<div ng-show="queryType==='Create Table'">
-						<div class="input-label" >Column Name</div>
-						<input type="text" ng-model="column"></input><br>
-						<select  ng-model="dataType" ng-options="data for data in dataTypes"><option value="" selected>Data Type</option></select>
-						<button class="table-button" ng-click="saveEntry(column, dataType)">Add Column</button>
-						<button class="table-button" ng-click="removeEntry(column)">Remove Column</button>
-					</div>
-
-					<div ng-show="queryType==='Update Rows' || queryType==='Insert Rows'">
-						<div class="input-label">Column Name</div>
-						<input type="text" ng-model="columnName"></input><br>
-						<div class="input-label">Value</div>
-						<input type="text" ng-model="entryValue"></input>
-						<div>
-							<button class="table-button" ng-click="saveEntry(columnName, entryValue)">Add Entry</button>
-							<button class="table-button" ng-click="removeEntry(columnName)">Remove Entry</button>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-xs-6">
-					<div class="input-label" ng-show="queryType==='Update Rows' || queryType==='Insert Rows'">Entries to be added</div>
-					<div class="input-label" margin="0, auto" ng-show="queryType==='Create Table'">Columns to be created</div>
-					<div class="rows-to-add" ng-repeat="(key, value) in rowsToAdd">{{key}} : {{value}}</div>
-				</div>
-			</div>
-
-			<div class="submit-buttons">
-				<button class="table-button" ng-click="executeQuery(query)">Submit</button>
-        <button type="button" class="table-button" ng-csv="exportFile()" filename="data.csv" field-seperator=",">Export</button>
-        <input type="file" name="filename" id="filename">
-			</div>
-		</div>
+<div>
+	<h1>Create Table</h1>
+  <br />
+	<form>	
+		<input type="file" name="filename" id="filename">
 	</form>
-
+  <div>
+    <br />
+    <table class="table table-striped">
+      <thead class="thead-inverse">
+        <tr>
+          <th ng-repeat="header in headers">{{ header }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="row in body">
+          <td ng-repeat="record in row">{{ record }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <form ng-show="visible">
+    <input id="tablename" class="form-control" type="text" ng-model="name" placeholder='Table Name'></input>
+    <br />
+    <button class="table-button" ng-click="importTable()">Import Table</button>
+  </form>
 </div>

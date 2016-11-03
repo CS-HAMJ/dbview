@@ -10,7 +10,6 @@ function tableController($scope, tableService, $stateParams, dbService, $http, $
   $scope.displayName = tableService.currentTable;
   $scope.dataToDisplay = tableService.getData($scope.name);
 
-
   // reference the data that will be rendered to a table format
   $scope.gridData = {
     data: $scope.dataToDisplay,
@@ -25,7 +24,7 @@ function tableController($scope, tableService, $stateParams, dbService, $http, $
     $scope.entryValue = '';
   };
   $scope.removeEntry = (column) => delete $scope.rowsToAdd[column];
-  // $scope.query = '';
+
   $scope.queryData = {};
 
   $scope.exportFile = function (){
@@ -39,21 +38,6 @@ function tableController($scope, tableService, $stateParams, dbService, $http, $
 
     return tableService.tableData[tableService.currentTable];
   }
-
-  var data;
-    function handleFileSelect(evt) {
-      var file = evt.target.files[0];
-      Papa.parse(file, {
-       header: false,
-       dynamicTyping: true,
-       complete: function(results) {
-         data = results;
-         console.log('papadata', data)
-       }
-     });
-    }
-
-    $("#filename").change(handleFileSelect);
 
   // execute a raw query and update displayed table
   $scope.executeQuery = function (query) {
@@ -75,7 +59,7 @@ function tableController($scope, tableService, $stateParams, dbService, $http, $
       headers: {
         'Content-Type': 'application/json'
       },
-      data: { creds: dbService.creds, where: query, valuesToInsert: $scope.rowsToAdd, table: tableName }
+      data: { creds: dbService.creds, where: tableName, valuesToInsert: $scope.rowsToAdd, table: tableName }
     })
       .then((response) => {
         const columns = Object.keys(response.data[0]).map( (colname) => {

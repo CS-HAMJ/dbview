@@ -3,6 +3,7 @@ const app = angular
     'ui.router',
     'Dbview.HomeController',
     'Dbview.TableController',
+    'Dbview.ImportController',
     'Dbview.DbController',
     'Dbview.tableService',
     'Dbview.dbService',
@@ -22,6 +23,12 @@ function configFunction($stateProvider, $urlRouterProvider) {
       templateUrl: './partials/home.html',
       controller: 'HomeController'
     })
+    .state('create', {
+      cache: false,
+      url: '/create',
+      templateUrl: './partials/create.html',
+      controller: 'ImportController'
+    })
     .state('table', {
       cache: false,
       url: '/table',
@@ -34,10 +41,5 @@ function configFunction($stateProvider, $urlRouterProvider) {
       templateUrl: './partials/tableselect.html',
       controller: 'DbController'
     })
-    .state('create', {
-      cache: false,
-      url: '/create',
-      templateUrl: './partials/create.html',
-      controller: 'TableController'
-    })
+  
 };

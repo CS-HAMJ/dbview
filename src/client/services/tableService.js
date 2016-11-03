@@ -4,6 +4,7 @@ class tableService {
     this.activeTables = [];
     this.tableData = {};
     this.currentTable = '';
+    this.newTable = '';
   }
   activateTable(tablename) {
     this.activeTables.push(tablename)
