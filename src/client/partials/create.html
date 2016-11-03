@@ -1,12 +1,12 @@
 <tablenav></tablenav>
-<h1>{{displayName}}</h1>
+<h1>Create Table</h1>
 
 <div class='table-viewer'>
 
 	<div ui-grid='gridData' class='grid'></div>
 	<br>
-	<select class="dropdown" ng-model="queryType" ng-options="thing for thing in queryOptions"><option value="" selected>Please select a query type</option></select><br>
-	<form name="values" class="query-form">
+	<!-- <select class="dropdown" ng-model="queryType" >Create Table</select><br> -->
+	<form ng-init="queryType='Create Table'" name="values" class="query-form">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-xs-6">
@@ -46,6 +46,10 @@
 
 			<div class="submit-buttons">
 				<button class="table-button" ng-click="executeQuery(query)">Submit</button>
-				<button class="table-button" ng-click="reset()">Reset</button>
-				<button type="button" class="table-button" ng-csv="exportFile()" filename="data.csv" field-seperator=",">Export</button>
+        <button type="button" class="table-button" ng-csv="exportFile()" filename="data.csv" field-seperator=",">Export</button>
+        <input type="file" name="filename" id="filename">
 			</div>
+		</div>
+	</form>
+
+</div>

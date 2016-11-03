@@ -34,4 +34,10 @@ function configFunction($stateProvider, $urlRouterProvider) {
       templateUrl: './partials/tableselect.html',
       controller: 'DbController'
     })
+    .state('create', {
+      cache: false,
+      url: '/create',
+      templateUrl: './partials/create.html',
+      controller: 'TableController'
+    })
 };
