@@ -1,0 +1,20 @@
+{
+  "name": "dbview",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Hoon Choi <vhchoi@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/hoonchoi/dbview",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-csv-import": "^0.0.37"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "name": "angular-csv-import",
+  "version": "0.0.37",
+  "main": "dist/angular-csv-import.js",
+  "license": "MIT",
+  "authors": [
+    "Bahaaldine AZARMI <bahaaldine@gmail.com>"
+  ],
+  "homepage": "https://github.com/cybadave/angular-csv-import",
+  "description": "angular component let's you import a CSV file",
+  "keywords": [
+    "angular",
+    "csv",
+    "import"
+  ],
+  "ignore": [
+    "source",
+    "spec",
+    ".bowerrc",
+    ".gitignore",
+    ".jshintignore",
+    ".jshintrc",
+    "bower.json",
+    "gruntfile.js",
+    "package.json",
+    "README.md"
+  ],
+  "dependencies": {},
+  "devDependencies": {},
+  "_release": "0.0.37",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.37",
+    "commit": "18d66e299cc28df9e5bea583b1a52c5463ca4853"
+  },
+  "_source": "https://github.com/bahaaldine/angular-csv-import.git",
+  "_target": "^0.0.37",
+  "_originalSource": "angular-csv-import",
+  "_direct": true
+}

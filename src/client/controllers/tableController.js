@@ -40,6 +40,21 @@ function tableController($scope, tableService, $stateParams, dbService, $http, $
     return tableService.tableData[tableService.currentTable];
   }
 
+  var data;
+    function handleFileSelect(evt) {
+      var file = evt.target.files[0];
+      Papa.parse(file, {
+       header: false,
+       dynamicTyping: true,
+       complete: function(results) {
+         data = results;
+         console.log('papadata', data)
+       }
+     });
+    }
+
+    $("#filename").change(handleFileSelect);
+
   // execute a raw query and update displayed table
   $scope.executeQuery = function (query) {
     let route;
@@ -63,7 +78,6 @@ function tableController($scope, tableService, $stateParams, dbService, $http, $
       data: { creds: dbService.creds, where: query, valuesToInsert: $scope.rowsToAdd, table: tableName }
     })
       .then((response) => {
-        console.log(response.data);
         const columns = Object.keys(response.data[0]).map( (colname) => {
           console.log(colname);
           return { field: colname };
@@ -72,7 +86,6 @@ function tableController($scope, tableService, $stateParams, dbService, $http, $
         // save the data in table service and update grid data
 
         tableService.addTableData($scope.name, response.data)
-        console.log('logged');
 
         $scope.dataToDisplay  = tableService.getData($scope.name);
         $scope.gridData = {
